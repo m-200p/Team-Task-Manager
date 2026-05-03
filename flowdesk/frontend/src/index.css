@@ -8,6 +8,9 @@
   ::-webkit-scrollbar { width: 6px; height: 6px; }
   ::-webkit-scrollbar-track { background: transparent; }
   ::-webkit-scrollbar-thumb { background: #ced3e0; border-radius: 99px; }
+
+  .dark body { background-color: #0f1117; color: #e4e7f0; }
+  .dark ::-webkit-scrollbar-thumb { background: #2d3148; }
 }
 
 @layer components {
@@ -35,4 +38,42 @@
   .badge {
     @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
   }
+
+  /* Dark mode overrides */
+  .dark .card {
+    @apply bg-[#1a1d27] border-[#2d3148];
+  }
+  .dark .input {
+    @apply bg-[#1e2130] border-[#2d3148] text-[#e4e7f0] placeholder-[#5a6080];
+  }
+  .dark .btn-ghost {
+    @apply text-[#c4c9db] hover:bg-[#1e2130];
+  }
+  .dark .btn-danger {
+    @apply bg-red-900/20 hover:bg-red-900/30 text-red-400;
+  }
 }
+
+/* Dark mode utility overrides */
+.dark .bg-white { background-color: #1a1d27 !important; }
+.dark .bg-surface-50 { background-color: #13151f !important; }
+.dark .bg-surface-100 { background-color: #1e2130 !important; }
+.dark .bg-surface-200 { background-color: #252840 !important; }
+.dark .border-surface-100 { border-color: #1e2130 !important; }
+.dark .border-surface-200 { border-color: #2d3148 !important; }
+.dark .text-ink-900 { color: #e4e7f0 !important; }
+.dark .text-ink-700 { color: #c4c9db !important; }
+.dark .text-ink-500 { color: #9299b0 !important; }
+.dark .text-ink-400 { color: #9299b0 !important; }
+.dark .text-ink-300 { color: #5a6080 !important; }
+.dark .text-ink-200 { color: #3a4060 !important; }
+.dark .shadow-card { box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; }
+.dark .shadow-panel { box-shadow: 0 4px 24px rgba(0,0,0,0.5) !important; }
+.dark .bg-brand-50 { background-color: #1e2040 !important; }
+.dark .bg-brand-100 { background-color: #252860 !important; }
+.dark .bg-green-50 { background-color: #0d2010 !important; }
+.dark .bg-blue-50 { background-color: #0d1a2e !important; }
+.dark .bg-purple-50 { background-color: #1a1040 !important; }
+.dark .bg-amber-50 { background-color: #2a1f00 !important; }
+.dark .bg-red-50 { background-color: #2a0d0d !important; }
+.dark .bg-orange-50 { background-color: #2a1500 !important; }
