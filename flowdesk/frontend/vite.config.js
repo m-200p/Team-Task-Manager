@@ -11,5 +11,8 @@ export default defineConfig({
         changeOrigin: true
       }
     }
+  },
+  preview: {
+    allowedHosts: ['shimmering-empathy-production-8dae.up.railway.app']
   }
 });
