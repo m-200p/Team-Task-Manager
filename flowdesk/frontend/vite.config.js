@@ -13,6 +13,8 @@ export default defineConfig({
     }
   },
   preview: {
-    allowedHosts: ['shimmering-empathy-production-8dae.up.railway.app']
+    host: '0.0.0.0',
+    port: 5173,
+    allowedHosts: 'all'
   }
 });
