@@ -5,8 +5,7 @@ import { useAuth } from '../context/AuthContext';
 
 const SceneBg = () => (
   <div style={{
-    position: 'absolute',
-    inset: 0,
+    position: 'absolute', inset: 0,
     background: 'linear-gradient(135deg,#0f172a,#1e1b4b,#0f172a)',
     overflow: 'hidden'
   }}>
@@ -49,12 +48,15 @@ export default function LoginPage() {
     background: 'rgba(255,255,255,0.08)',
     border: '1px solid rgba(255,255,255,0.15)',
     borderRadius: 12,
-    padding: '11px 12px 11px 38px',
+    padding: '13px 12px 13px 40px',
     color: 'white',
-    fontSize: 13,
+    fontSize: 14,
     outline: 'none',
     transition: 'all 0.25s ease',
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
+    WebkitBoxShadow: '0 0 0 1000px rgba(15,23,42,0.95) inset',
+    WebkitTextFillColor: 'white',
+    caretColor: 'white',
   };
 
   const handleFocus = (e) => {
@@ -75,23 +77,28 @@ export default function LoginPage() {
       <SceneBg />
 
       {/* LEFT */}
-      <div style={{ flex: 1, padding: '40px 60px', color: 'white', zIndex: 2, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', minHeight: '100vh' }}>
+      <div style={{
+        flex: 1, padding: '40px 60px', color: 'white', zIndex: 2,
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'space-between', minHeight: '100vh'
+      }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{
             width: 36, height: 36,
             background: 'linear-gradient(135deg,#6366f1,#8b5cf6)',
             borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}>
-            <Zap size={16} />
+            <Zap size={16} color="white" />
           </div>
           <span style={{ fontWeight: 700, fontSize: 18 }}>FlowDesk</span>
         </div>
 
         <div>
           <h1 style={{
-            fontSize: 40, fontWeight: 700, lineHeight: 1.3,
+            fontSize: 42, fontWeight: 700, lineHeight: 1.3,
             background: 'linear-gradient(90deg,#fff,#a5b4fc)',
-            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent'
+            WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
           }}>
             Welcome back.<br />Great to see you.
           </h1>
@@ -101,20 +108,24 @@ export default function LoginPage() {
           <div style={{ marginTop: 25, display: 'flex', gap: 10 }}>
             {['Tasks', 'Projects', 'Team'].map(item => (
               <span key={item} style={{
-                padding: '6px 12px', borderRadius: 20,
-                background: 'rgba(255,255,255,0.08)', fontSize: 12, color: 'white'
+                padding: '6px 14px', borderRadius: 20,
+                background: 'rgba(255,255,255,0.08)',
+                fontSize: 12, color: 'white'
               }}>{item}</span>
             ))}
           </div>
         </div>
 
-        <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12 }}>© 2026 FlowDesk. All rights reserved.</p>
+        <p style={{ color: 'rgba(255,255,255,0.2)', fontSize: 12 }}>
+          © 2026 FlowDesk. All rights reserved.
+        </p>
       </div>
 
       {/* RIGHT CARD */}
       <div
         style={{
-          width: 320, marginRight: 60, padding: 26, borderRadius: 20,
+          width: 380, margin: '0 80px 0 0', padding: '30px 28px',
+          borderRadius: 20,
           background: 'linear-gradient(145deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))',
           border: '1px solid rgba(255,255,255,0.18)',
           backdropFilter: 'blur(20px)',
@@ -124,28 +135,37 @@ export default function LoginPage() {
         onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-6px)'}
         onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
       >
-        <h2 style={{ color: 'white', fontSize: 20, fontWeight: 700 }}>Welcome back</h2>
-        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginBottom: 16 }}>
+        <h2 style={{ color: 'white', fontSize: 22, fontWeight: 700, margin: '0 0 4px' }}>
+          Welcome back
+        </h2>
+        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: '0 0 20px' }}>
           Sign in to your FlowDesk account
         </p>
 
         {error && (
           <div style={{
-            background: 'rgba(239,68,68,0.15)', padding: 8,
-            borderRadius: 10, marginBottom: 12, fontSize: 12, color: '#f87171'
+            background: 'rgba(239,68,68,0.15)', padding: '10px 12px',
+            borderRadius: 10, marginBottom: 14, fontSize: 13, color: '#f87171',
+            border: '1px solid rgba(239,68,68,0.25)'
           }}>{error}</div>
         )}
 
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
           <div style={{ position: 'relative' }}>
-            <Mail size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', opacity: 0.5, color: 'white' }} />
+            <Mail size={15} style={{
+              position: 'absolute', left: 13, top: '50%',
+              transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)'
+            }} />
             <input type="email" placeholder="Email" value={form.email}
               onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
               style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
           </div>
 
           <div style={{ position: 'relative' }}>
-            <Lock size={14} style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', opacity: 0.5, color: 'white' }} />
+            <Lock size={15} style={{
+              position: 'absolute', left: 13, top: '50%',
+              transform: 'translateY(-50%)', color: 'rgba(255,255,255,0.4)'
+            }} />
             <input type="password" placeholder="Password" value={form.password}
               onChange={e => setForm(f => ({ ...f, password: e.target.value }))}
               style={inputBase} onFocus={handleFocus} onBlur={handleBlur} />
@@ -153,22 +173,23 @@ export default function LoginPage() {
 
           <button type="submit" disabled={loading}
             style={{
-              marginTop: 6, padding: 12, borderRadius: 12,
-              border: 'none', color: 'white', fontWeight: 600,
+              marginTop: 4, padding: '14px 12px', borderRadius: 12,
+              border: 'none', color: 'white', fontWeight: 600, fontSize: 15,
               background: loading ? 'rgba(99,102,241,0.5)' : 'linear-gradient(135deg,#6366f1,#8b5cf6)',
               boxShadow: '0 4px 20px rgba(99,102,241,0.5)',
-              cursor: loading ? 'not-allowed' : 'pointer', transition: 'all 0.3s ease'
+              cursor: loading ? 'not-allowed' : 'pointer', transition: 'all 0.3s ease',
+              width: '100%'
             }}
-            onMouseEnter={e => { if (!loading) e.target.style.transform = 'scale(1.05)' }}
-            onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+            onMouseEnter={e => { if (!loading) e.currentTarget.style.transform = 'scale(1.03)' }}
+            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
           >
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
 
-        <p style={{ textAlign: 'center', fontSize: 12, marginTop: 14, color: 'rgba(255,255,255,0.4)' }}>
+        <p style={{ textAlign: 'center', fontSize: 13, marginTop: 16, color: 'rgba(255,255,255,0.4)' }}>
           Don't have an account?{' '}
-          <Link to="/signup" style={{ color: '#a5b4fc' }}>Create one</Link>
+          <Link to="/signup" style={{ color: '#a5b4fc', fontWeight: 500 }}>Create one</Link>
         </p>
       </div>
     </div>
